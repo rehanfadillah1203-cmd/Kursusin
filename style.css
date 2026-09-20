@@ -1,0 +1,51 @@
+.badge-available {
+  background-color: #d1fae5;
+  color: #065f46;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 12px;
+  display: inline-block;
+}
+
+.badge-full {
+  background-color: #fee2e2;
+  color: #991b1b;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 12px;
+  display: inline-block;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh; 
+  font-family: Arial, sans-serif;
+}
+table {
+  width: 100%;            
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 12px 16px;    
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+th {
+  background-color: #f1f5f9; 
+  font-weight: bold;
+}
+.container {
+  width: 100%;
+  max-width: 1200px; 
+  margin: 0 auto;    
+  padding: 20px;
+}
