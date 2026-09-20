@@ -49,6 +49,7 @@ $year = date('Y'); ?>
         <p> menghasilkan jumlah. </p>
       </article>
     </section> 
+    <a href="fee-calculator.php">Lihat Estimasi Biaya</a>
     <section id="alur">
       <h2>Cara Mendaftar</h2>
       <ol>
