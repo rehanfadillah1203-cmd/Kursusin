@@ -7,52 +7,52 @@ $year = date('Y');
 
 $courses = [
   [
-    'code' => 'KBT-01',
-    'name' => 'Kabataku Dasar',
-    'fee' => 150000,
+    'code' => 'WEB-01',
+    'name' => 'Web Dasar',
+    'fee' => 200000,
     'quota' => 30,
     'registered' => 12,
     'start_date' => '2026-09-21',
   ],
   [
-    'code' => 'KBT-02',
-    'name' => 'Menghitung',
-    'fee' => 150000,
+    'code' => 'PHP-01',
+    'name' => 'PHP Dasar',
+    'fee' => 250000,
+    'quota' => 30,
+    'registered' => 18,
+    'start_date' => '2026-09-22',
+  ],
+  [
+    'code' => 'PHP-02',
+    'name' => 'PHP Lanjutan',
+    'fee' => 300000,
     'quota' => 25,
-    'registered' => 25,
+    'registered' => 24,
     'start_date' => '2026-09-24',
   ],
   [
-    'code' => 'KBT-03',
-    'name' => 'Penjumlahan dan Pengurangan',
-    'fee' => 175000,
-    'quota' => 30,
-    'registered' => 18,
+    'code' => 'LAR-01',
+    'name' => 'Laravel Fundamental',
+    'fee' => 350000,
+    'quota' => 25,
+    'registered' => 25,
     'start_date' => '2026-09-28',
   ],
   [
-    'code' => 'KBT-04',
-    'name' => 'Mengenal Huruf',
-    'fee' => 150000,
-    'quota' => 25,
+    'code' => 'DB-01',
+    'name' => 'MySQL Dasar',
+    'fee' => 275000,
+    'quota' => 20,
     'registered' => 0,
     'start_date' => '2026-10-01',
   ],
   [
-    'code' => 'KBT-05',
-    'name' => 'Membaca Dasar',
-    'fee' => 175000,
-    'quota' => 20,
+    'code' => 'UI-01',
+    'name' => 'UI Web Dasar',
+    'fee' => 225000,
+    'quota' => 35,
     'registered' => 9,
     'start_date' => '2026-10-03',
-  ],
-  [
-    'code' => 'KBT-06',
-    'name' => 'Menulis Dasar',
-    'fee' => 175000,
-    'quota' => 25,
-    'registered' => 24,
-    'start_date' => '2026-10-05',
   ],
 ];
 ?>
@@ -61,13 +61,11 @@ $tagline = 'Belajar, daftar, dan kelola kursus dalam satu tempat.';
 $year = date('Y'); ?>
 <!doctype html>
 <html lang="id">
-  
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><?= htmlspecialchars($siteName) ?></title>
-
-  <!-- HUBUNGKAN FILE CSS DI SINI -->
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -101,37 +99,40 @@ $year = date('Y'); ?>
         <p> siswa belajar melalui demonstrasi, latihan, dan evaluasi. </p>
       </article>
     </section> 
-    <section id="katalog">
-  <h2>Katalog Kursus</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Kode</th>
-        <th>Nama Kursus</th>
-        <th>Biaya</th>
-        <th>Mulai</th>
-        <th>Sisa Kursi</th>
-        <th>Status</th>
-      </tr>
-    </thead>
-    <tbody>
-      <?php foreach ($courses as $course): ?>
-        <?php
-          $status = statusKursus($course['quota'], $course['registered']);
-          $statusClass = $status === 'Penuh' ? 'badge-full' : 'badge-available';
-        ?>
-        <tr>
-          <td><?= htmlspecialchars($course['code']) ?></td>
-          <td><?= htmlspecialchars(trim($course['name'])) ?></td>
-          <td><?= rupiah($course['fee']) ?></td>
-          <td><?= formatTanggal($course['start_date']) ?></td>
-          <td><?= sisaKursi($course['quota'], $course['registered']) ?></td>
-          <td><span class="<?= $statusClass ?>"><?= $status ?></span></td>
-        </tr>
-      <?php endforeach; ?>
-    </tbody>
-  </table>
-</section>
+   <section id="katalog">
+      <div class="katalog-header">
+        <h2>Katalog Kursus</h2>
+        <a href="fee-calculator.php" class="btn-estimasi">Lihat Estimasi Biaya</a>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Kode</th>
+            <th>Nama Kursus</th>
+            <th>Biaya</th>
+            <th>Mulai</th>
+            <th>Sisa Kursi</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php foreach ($courses as $course): ?>
+            <?php
+              $status = statusKursus($course['quota'], $course['registered']);
+              $statusClass = $status === 'Penuh' ? 'badge-full' : 'badge-available';
+            ?>
+            <tr>
+              <td><?= htmlspecialchars($course['code']) ?></td>
+              <td><?= htmlspecialchars(trim($course['name'])) ?></td>
+              <td><?= rupiah($course['fee']) ?></td>
+              <td><?= formatTanggal($course['start_date']) ?></td>
+              <td><?= sisaKursi($course['quota'], $course['registered']) ?></td>
+              <td><span class="<?= $statusClass ?>"><?= $status ?></span></td>
+            </tr>
+          <?php endforeach; ?>
+        </tbody>
+      </table>
+    </section>
     <a href="fee-calculator.php">Lihat Estimasi Biaya</a>
     <section id="alur">
       <h2>Cara Mendaftar</h2>
