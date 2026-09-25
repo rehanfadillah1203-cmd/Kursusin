@@ -1,0 +1,23 @@
+==================================================
+PERBEDAAN LOCALHOST VS HOSTING (PRODUCTION)
+==================================================
+
+1. LINGKUNGAN (ENVIRONMENT)
+   - Localhost : Berjalan di komputer/laptop lokal menggunakan XAMPP, Laragon, atau Valet.
+   - Hosting   : Berjalan di server remote internet yang aktif 24 jam nonstop.
+
+2. DOMAIN & ALAMAT URL
+   - Localhost : Menggunakan http://localhost/Kursusin atau http://kursusin.test
+   - Hosting   : Menggunakan nama domain publik resmi (contoh: https://kursusin.com)
+
+3. SENSITIVITAS NAMA FILE & FOLDER (CASE SENSITIVITY)
+   - Localhost : Windows bersifat Case-Insensitive (folder 'CSS' dan 'css' dianggap sama).
+   - Hosting   : Mayoritas menggunakan Linux yang bersifat Case-Sensitive ('CSS' dan 'css' dianggap folder BERBEDA).
+
+4. DATABASE & KONEKSI
+   - Localhost : Host 'localhost', User 'root', Password biasanya kosong.
+   - Hosting   : Host khusus dari provider, User & Password dibuat acak dan sangat ketat untuk keamanan.
+
+5. KEAMANAN & CACHE
+   - Localhost : Pengujian bebas tanpa HTTPS/SSL dan keamanan ekstra.
+   - Hosting   : Wajib menggunakan SSL (HTTPS), ada firewall server, dan caching browser yang lebih ketat.

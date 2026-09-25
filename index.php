@@ -1,10 +1,8 @@
 <?php
 require_once __DIR__ . '/helpers.php';
-
-$siteName = 'KursusKu Pisang Pride';
+$siteName = 'Kursusin Pisang Pride';
 $tagline = 'Belajar, daftar, dan kelola kursus dalam satu tempat.';
 $year = date('Y');
-
 $courses = [
   [
     'code' => 'WEB-01',
@@ -56,53 +54,59 @@ $courses = [
   ],
 ];
 ?>
-<?php $siteName = 'KursusKu Pisang Pride';
-$tagline = 'Belajar, daftar, dan kelola kursus dalam satu tempat.';
-$year = date('Y'); ?>
 <!doctype html>
 <html lang="id">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><?= htmlspecialchars($siteName) ?></title>
-  <link rel="stylesheet" href="style.css">
-</head>
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title><?= htmlspecialchars($siteName) ?></title>
-</head>
-
-<body> 
-  <header>
-    <nav aria-label="Navigasi utama"> <a href="index.php"> <strong><?= htmlspecialchars($siteName) ?></strong> </a> <a href="#keunggulan">Keunggulan</a> <a href="#katalog">Katalog</a> <a href="#alur">Cara Daftar</a> <a href="#kontak">Kontak</a> </nav>
+  <!-- Menghubungkan ke folder aseets/CSS/style.css sesuai VS Code Anda -->
+  <link rel="stylesheet" href="assets/css/style.css?v=<?= time(); ?>">
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.php"><?= htmlspecialchars($siteName) ?></a>
+      <nav aria-label="Navigasi utama">
+        <a href="index.php">Beranda</a>
+        <a href="#keunggulan">Keunggulan</a>
+        <a href="#katalog">Katalog</a>
+        <a href="#alur">Cara Daftar</a>
+        <a href="#kontak">Kontak</a>
+        <a href="registration.php">Daftar Kursus</a>
+      </nav>
+    </div>
   </header>
-  <main>
-    <section id="hero">
+
+  <main class="container">
+    <section id="hero" class="page-intro">
       <h1><?= htmlspecialchars($tagline) ?></h1>
-      <p> Temukan kursus teknologi yang relevan untuk meningkatkan keterampilan Anda. </p> <a href="#katalog"> Lihat Katalog Kursus </a>
+      <p>Temukan kursus teknologi yang relevan untuk meningkatkan keterampilan Anda.</p>
+      <a class="btn-primary" href="#katalog">Lihat Katalog Kursus</a>
+      <a class="btn-link" href="registration.php">Daftar Sekarang</a> 
     </section>
+
     <section id="keunggulan">
-      <h2>Mengapa Memilih KursusKu?</h2>
-      <article>
-        <h3>Materi Terarah</h3>
-        <p> Materi disusun bertahap dari dasar hingga praktik. </p>
-      </article>
-      <article>
-        <h3>Belajar dengan Proyek</h3>
-        <p> Setiap tahap menghasilkan hasil nyata. </p>
-      </article>
-      <article>
-        <h3>Pendampingan Praktik</h3>
-        <p> siswa belajar melalui demonstrasi, latihan, dan evaluasi. </p>
-      </article>
-    </section> 
-   <section id="katalog">
+      <h2>Mengapa Memilih <?= htmlspecialchars($siteName) ?>?</h2>
+      <div class="feature-grid">
+        <article class="feature-card">
+          <h3>Materi Terarah</h3>
+          <p>Materi disusun bertahap dari dasar hingga praktik.</p>
+        </article>
+        <article class="feature-card">
+          <h3>Belajar dengan Proyek</h3>
+          <p>Setiap tahap menghasilkan hasil nyata.</p>
+        </article>
+        <article class="feature-card">
+          <h3>Pendampingan Praktik</h3>
+          <p>Siswa belajar melalui demonstrasi, latihan, dan evaluasi.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="katalog">
       <div class="katalog-header">
         <h2>Katalog Kursus</h2>
-        <a href="fee-calculator.php" class="btn-estimasi">Lihat Estimasi Biaya</a>
+        <a href="fee-calculator.php" class="btn-primary">Lihat Estimasi Biaya</a>
       </div>
       <table>
         <thead>
@@ -127,36 +131,45 @@ $year = date('Y'); ?>
               <td><?= rupiah($course['fee']) ?></td>
               <td><?= formatTanggal($course['start_date']) ?></td>
               <td><?= sisaKursi($course['quota'], $course['registered']) ?></td>
-              <td><span class="<?= $statusClass ?>"><?= $status ?></span></td>
+              <td><span class="badge <?= $statusClass ?>"><?= $status ?></span></td>
             </tr>
           <?php endforeach; ?>
         </tbody>
       </table>
     </section>
-    <a href="fee-calculator.php">Lihat Estimasi Biaya</a>
+
     <section id="alur">
       <h2>Cara Mendaftar</h2>
       <ol>
         <li>Pilih kursus yang diminati.</li>
         <li>Isi form pendaftaran dengan benar.</li>
         <li>Periksa kembali data.</li>
-        <li> Kirim pendaftaran dan tunggu konfirmasi admin. </li>
+        <li>Kirim pendaftaran dan tunggu konfirmasi admin.</li>
       </ol>
+      <br>
+      <a class="btn-primary" href="registration.php">Mulai Daftar</a>
     </section>
+
     <section id="media">
-      <h2>Kenali Program Kami</h2> <img src="aseets/images/hero-kursus.jpg" alt="Siswa sedang mengikuti kegiatan kursus komputer" width="640">
-      <h3>Video Singkat</h3> <video controls width="640">
-        <source src="aseets/video/intro-kursus.mp4" type="video/mp4"> Browser Anda tidak mendukung video HTML5.
+      <h2>Kenali Program Kami</h2>
+      <img src="aseets/images/hero-kursus.jpg" alt="Siswa sedang mengikuti kegiatan kursus komputer" width="640">
+      <h3>Video Singkat</h3>
+      <video controls width="640">
+        <source src="aseets/video/intro-kursus.mp4" type="video/mp4">
+        Browser Anda tidak mendukung video HTML5.
       </video>
-      <p> <a href="https://www.php.net/" target="_blank" rel="noopener"> Dokumentasi PHP </a> </p>
+      <p><a href="https://www.php.net/" target="_blank" rel="noopener">Dokumentasi PHP</a></p>
     </section>
+
     <section id="kontak">
       <h2>Kontak</h2>
-      <p> Email: rehanfadillah1203@gmail.com </p>
-      <p> Alamat:Pisang Pride cuy </p>
+      <p>Email: rehanfadillah1203@gmail.com</p>
+      <p>Alamat: Pisang Pride cuy</p>
     </section>
   </main>
-  <footer> <small> &copy; <?= $year ?> <?= htmlspecialchars($siteName) ?> </small> </footer>
-</body>
 
+  <footer class="site-footer">
+    <small>&copy; <?= $year ?> <?= htmlspecialchars($siteName) ?></small>
+  </footer>
+</body>
 </html>

@@ -1,0 +1,29 @@
+==================================================
+MATRIKS PENGUJIHAN APLIKASI - KURSUSIN PISANG PRIDE
+==================================================
+
+[1] PENGUJIAN TAMPILAN & LAYOUT
+--------------------------------------------------
+- Halaman Utama (index.php)       : [PASS] Terload sempurna
+- CSS / Styling (style.css)        : [PASS] Warna & layout aktif
+- Gambar & Media (hero-kursus.jpg) : [PASS] Tampil dengan baik
+- Responsif Layar HP (Mobile View) : [PASS] Menyesuaikan layar
+
+[2] PENGUJIAN NAVIGASI & LINK
+--------------------------------------------------
+- Menu Beranda                    : [PASS] Berfungsi
+- Anchor Link (#katalog, #alur)   : [PASS] Scroll sesuai target
+- Tombol "Daftar Kursus"          : [PASS] Mengarah ke registration.php
+- Link Dokumentasi External       : [PASS] Terbuka di tab baru
+
+[3] PENGUJIAN FITUR & LOGIKA PHP
+--------------------------------------------------
+- Pemanggilan helpers.php          : [PASS] Berhasil tanpa error
+- Format Mata Uang (Rupiah)        : [PASS] Tampil Rp xx.xxx
+- Perhitungan Sisa Kursi           : [PASS] Sesuai kalkulasi
+- Status Kursi (Tersedia / Penuh)  : [PASS] Badge berubah warna
+
+==================================================
+Tanggal Pengujian : 25 September 2026
+Dites Oleh        : Admin Pisang Pride
+==================================================

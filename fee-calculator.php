@@ -16,29 +16,36 @@ $total = $subtotal - $discount + $adminFee;
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Kalkulator Biaya - KursusKu</title>
-  <style>
-    body{font-family:Arial,sans-serif;background:#f5f7f6;margin:0;padding:32px;color:#16332c}
-    .card{max-width:720px;margin:auto;background:white;padding:24px;border-radius:16px}
-    table{width:100%;border-collapse:collapse}
-    th,td{border-bottom:1px solid #ddd;padding:10px;text-align:left}
-    .total{background:#eaf7f3;font-weight:bold}
-    a{color:#0f766e}
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="card">
-    <h1>Kalkulator Estimasi Biaya</h1>
-    <p>Kursus: <strong><?= $courseName ?></strong></p>
-    <table>
-      <tr><th>Komponen</th><th>Nilai</th></tr>
-      <tr><td>Biaya per peserta</td><td>Rp <?= number_format($fee,0,',','.') ?></td></tr>
-      <tr><td>Jumlah peserta</td><td><?= $participantCount ?></td></tr>
-      <tr><td>Subtotal</td><td>Rp <?= number_format($subtotal,0,',','.') ?></td></tr>
-      <tr><td>Diskon (<?= $discountPercent ?>%)</td><td>- Rp <?= number_format($discount,0,',','.') ?></td></tr>
-      <tr><td>Biaya admin</td><td>Rp <?= number_format($adminFee,0,',','.') ?></td></tr>
-      <tr class="total"><td>Total akhir</td><td>Rp <?= number_format($total,0,',','.') ?></td></tr>
-    </table>
-    <p><a href="index.php">Kembali ke Beranda KursusKu</a></p>
+  <header>
+    <nav aria-label="Navigasi utama">
+      <a href="index.php"><strong>KursusKu Pisang Pride</strong></a>
+      <a href="index.php#katalog">Katalog</a>
+      <a href="index.php#kontak">Kontak</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="kalkulator">
+      <h2>Kalkulator Estimasi Biaya</h2>
+      <p>Kursus: <strong><?= htmlspecialchars($courseName) ?></strong></p>
+      <table>
+        <tr><th>Komponen</th><th>Nilai</th></tr>
+        <tr><td>Biaya per peserta</td><td>Rp <?= number_format($fee, 0, ',', '.') ?></td></tr>
+        <tr><td>Jumlah peserta</td><td><?= $participantCount ?></td></tr>
+        <tr><td>Subtotal</td><td>Rp <?= number_format($subtotal, 0, ',', '.') ?></td></tr>
+        <tr><td>Diskon (<?= $discountPercent ?>%)</td><td>- Rp <?= number_format($discount, 0, ',', '.') ?></td></tr>
+        <tr><td>Biaya admin</td><td>Rp <?= number_format($adminFee, 0, ',', '.') ?></td></tr>
+        <tr class="badge-available"><td><strong>Total akhir</strong></td><td><strong>Rp <?= number_format($total, 0, ',', '.') ?></strong></td></tr>
+      </table>
+      <p style="margin-top:20px;"><a href="index.php" class="btn-estimasi">Kembali ke Beranda KursusKu</a></p>
+    </section>
   </main>
+
+  <footer>
+    <small>&copy; <?= date('Y') ?> KursusKu Pisang Pride</small>
+  </footer>
 </body>
 </html>

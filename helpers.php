@@ -13,7 +13,6 @@ function sisaKursi(int $quota, int $registered): int
 {
     return max(0, $quota - $registered);
 }
-
 function formatTanggal(string $date): string
 {
     $value = new DateTimeImmutable($date);
