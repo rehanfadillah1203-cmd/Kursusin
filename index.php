@@ -1,92 +1,52 @@
 <?php
+$siteName = 'KursusKu Pisang Pride';
+$tagline  = 'Belajar, daftar, dan kelola kursus dalam satu tempat.';
+$year     = date('Y');
+
 require_once __DIR__ . '/helpers.php';
-$siteName = 'Kursusin Pisang Pride';
-$tagline = 'Belajar, daftar, dan kelola kursus dalam satu tempat.';
-$year = date('Y');
-$courses = [
-  [
-    'code' => 'WEB-01',
-    'name' => 'Web Dasar',
-    'fee' => 200000,
-    'quota' => 30,
-    'registered' => 12,
-    'start_date' => '2026-09-21',
-  ],
-  [
-    'code' => 'PHP-01',
-    'name' => 'PHP Dasar',
-    'fee' => 250000,
-    'quota' => 30,
-    'registered' => 18,
-    'start_date' => '2026-09-22',
-  ],
-  [
-    'code' => 'PHP-02',
-    'name' => 'PHP Lanjutan',
-    'fee' => 300000,
-    'quota' => 25,
-    'registered' => 24,
-    'start_date' => '2026-09-24',
-  ],
-  [
-    'code' => 'LAR-01',
-    'name' => 'Laravel Fundamental',
-    'fee' => 350000,
-    'quota' => 25,
-    'registered' => 25,
-    'start_date' => '2026-09-28',
-  ],
-  [
-    'code' => 'DB-01',
-    'name' => 'MySQL Dasar',
-    'fee' => 275000,
-    'quota' => 20,
-    'registered' => 0,
-    'start_date' => '2026-10-01',
-  ],
-  [
-    'code' => 'UI-01',
-    'name' => 'UI Web Dasar',
-    'fee' => 225000,
-    'quota' => 35,
-    'registered' => 9,
-    'start_date' => '2026-10-03',
-  ],
-];
+require_once __DIR__ . '/data.php';
 ?>
 <!doctype html>
 <html lang="id">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title><?= htmlspecialchars($siteName) ?></title>
-  <!-- Menghubungkan ke folder aseets/CSS/style.css sesuai VS Code Anda -->
-  <link rel="stylesheet" href="assets/css/style.css?v=<?= time(); ?>">
-<body>
+  <title><?= e($siteName) ?></title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/polish.css">
+</head>
+
+<body class="home-page">
   <header class="site-header">
-    <div class="container nav-wrap">
-      <a class="brand" href="index.php"><?= htmlspecialchars($siteName) ?></a>
-      <nav aria-label="Navigasi utama">
-        <a href="index.php">Beranda</a>
-        <a href="#keunggulan">Keunggulan</a>
-        <a href="#katalog">Katalog</a>
-        <a href="#alur">Cara Daftar</a>
-        <a href="#kontak">Kontak</a>
-        <a href="registration.php">Daftar Kursus</a>
-      </nav>
-    </div>
+    <nav class="site-nav container" aria-label="Navigasi utama">
+      <a class="brand" href="index.php"><?= e($siteName) ?></a>
+      <a href="#keunggulan">Keunggulan</a>
+      <a href="#katalog">Katalog</a>
+      <a href="#alur">Cara Daftar</a>
+      <a href="registration.php">Daftar Kursus</a>
+      <a href="history.php">History</a>
+      <a href="#kontak">Kontak</a>
+    </nav>
   </header>
 
   <main class="container">
     <section id="hero" class="page-intro">
-      <h1><?= htmlspecialchars($tagline) ?></h1>
+      <p class="eyebrow">Platform Belajar Teknologi</p>
+      <h1><?= e($tagline) ?></h1>
       <p>Temukan kursus teknologi yang relevan untuk meningkatkan keterampilan Anda.</p>
-      <a class="btn-primary" href="#katalog">Lihat Katalog Kursus</a>
-      <a class="btn-link" href="registration.php">Daftar Sekarang</a> 
+      <div class="hero-buttons">
+        <a href="#katalog" class="btn-primary">Lihat Kursus</a>
+        <a href="fee-calculator.php" class="calculator-link">Lihat Estimasi Biaya <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="hero-highlights" aria-label="Keunggulan singkat KursusKu">
+        <div><strong><?= count($courses) ?></strong><span>Kursus pilihan</span></div>
+        <div><strong>3</strong><span>Metode belajar</span></div>
+        <div><strong>100%</strong><span>Fokus praktik</span></div>
+      </div>
     </section>
 
     <section id="keunggulan">
-      <h2>Mengapa Memilih <?= htmlspecialchars($siteName) ?>?</h2>
+      <h2>Mengapa Memilih KursusKu?</h2>
       <div class="feature-grid">
         <article class="feature-card">
           <h3>Materi Terarah</h3>
@@ -94,20 +54,24 @@ $courses = [
         </article>
         <article class="feature-card">
           <h3>Belajar dengan Proyek</h3>
-          <p>Setiap tahap menghasilkan hasil nyata.</p>
+          <p>Setiap tahap menghasilkan bagian nyata dari aplikasi.</p>
         </article>
         <article class="feature-card">
           <h3>Pendampingan Praktik</h3>
-          <p>Siswa belajar melalui demonstrasi, latihan, dan evaluasi.</p>
+          <p>Mahasiswa belajar melalui demonstrasi, latihan, dan evaluasi.</p>
         </article>
       </div>
+
+      <h3>Fasilitas</h3>
+      <ul>
+        <?php foreach ($facilities as $facility): ?>
+          <li><?= e($facility) ?></li>
+        <?php endforeach; ?>
+      </ul>
     </section>
 
     <section id="katalog">
-      <div class="katalog-header">
-        <h2>Katalog Kursus</h2>
-        <a href="fee-calculator.php" class="btn-primary">Lihat Estimasi Biaya</a>
-      </div>
+      <h2>Katalog Kursus</h2>
       <table>
         <thead>
           <tr>
@@ -123,15 +87,15 @@ $courses = [
           <?php foreach ($courses as $course): ?>
             <?php
               $status = statusKursus($course['quota'], $course['registered']);
-              $statusClass = $status === 'Penuh' ? 'badge-full' : 'badge-available';
+              $class  = $status === 'Penuh' ? 'badge-full' : 'badge-available';
             ?>
             <tr>
-              <td><?= htmlspecialchars($course['code']) ?></td>
-              <td><?= htmlspecialchars(trim($course['name'])) ?></td>
-              <td><?= rupiah($course['fee']) ?></td>
-              <td><?= formatTanggal($course['start_date']) ?></td>
+              <td><?= e($course['code']) ?></td>
+              <td><?= e($course['name']) ?></td>
+              <td><?= formatRupiah($course['fee']) ?></td>
+              <td><?= e(formatTanggal($course['start_date'])) ?></td>
               <td><?= sisaKursi($course['quota'], $course['registered']) ?></td>
-              <td><span class="badge <?= $statusClass ?>"><?= $status ?></span></td>
+              <td><span class="badge <?= $class ?>"><?= e($status) ?></span></td>
             </tr>
           <?php endforeach; ?>
         </tbody>
@@ -142,20 +106,18 @@ $courses = [
       <h2>Cara Mendaftar</h2>
       <ol>
         <li>Pilih kursus yang diminati.</li>
-        <li>Isi form pendaftaran dengan benar.</li>
+        <li>Isi form pendaftaran.</li>
         <li>Periksa kembali data.</li>
-        <li>Kirim pendaftaran dan tunggu konfirmasi admin.</li>
+        <li>Kirim pendaftaran dan tunggu konfirmasi.</li>
       </ol>
-      <br>
-      <a class="btn-primary" href="registration.php">Mulai Daftar</a>
     </section>
 
     <section id="media">
       <h2>Kenali Program Kami</h2>
-      <img src="aseets/images/hero-kursus.jpg" alt="Siswa sedang mengikuti kegiatan kursus komputer" width="640">
+      <img src="assets/images/hero-kursus.jpg" alt="Mahasiswa sedang mengikuti kegiatan kursus komputer" width="640">
       <h3>Video Singkat</h3>
       <video controls width="640">
-        <source src="aseets/video/intro-kursus.mp4" type="video/mp4">
+        <source src="assets/video/intro-kursus.mp4" type="video/mp4">
         Browser Anda tidak mendukung video HTML5.
       </video>
       <p><a href="https://www.php.net/" target="_blank" rel="noopener">Dokumentasi PHP</a></p>
@@ -164,12 +126,12 @@ $courses = [
     <section id="kontak">
       <h2>Kontak</h2>
       <p>Email: rehanfadillah1203@gmail.com</p>
-      <p>Alamat: Pisang Pride cuy</p>
+      <p>Alamat: Pisang Pride</p>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <small>&copy; <?= $year ?> <?= htmlspecialchars($siteName) ?></small>
+  <footer>
+    <small>&copy; <?= e($year) ?> <?= e($siteName) ?></small>
   </footer>
 </body>
 </html>

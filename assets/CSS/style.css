@@ -2,22 +2,21 @@
 Pisang Pride - Main Stylesheet
 Theme: Vibrant Banana & Fresh Leaf (Kuning Pisang, Hijau Daun, & Cokelat Batang)
 ========================================================================== */
-
 /* --- CSS Variables & Color Palette --- */
 :root {
-  --primary-yellow: #FFD200;       /* Kuning Pisang Matang */
+  --primary-yellow: #FFD200;
   --primary-yellow-hover: #E6BC00;
   --primary-yellow-shadow: #C9A000;
-  --secondary-green: #2E7D32;     /* Hijau Daun Pisang */
+  --secondary-green: #2E7D32;
   --secondary-green-hover: #1B5E20;
-  --accent-brown: #5D4037;        /* Cokelat Batang/Kulit */
-  --accent-light-yellow: #FFFDE7; /* Krem/Kuning Soft */
+  --accent-brown: #5D4037;
+  --accent-light-yellow: #FFFDE7;
 
-  --bg-color: #FAFAFA;            /* Background Utama */
-  --surface-color: #FFFFFF;       /* Card & Container */
-  --text-main: #212121;           /* Teks Utama */
-  --text-muted: #666666;          /* Teks Sekunder */
-  --border-color: #FFE082;        /* Border Neutral Kuning Soft */
+  --bg-color: #FAFAFA;
+  --surface-color: #FFFFFF;
+  --text-main: #212121;
+  --text-muted: #666666;
+  --border-color: #FFE082;
 
   --status-available-bg: #E8F5E9;
   --status-available-text: #2E7D32;
@@ -37,38 +36,39 @@ Theme: Vibrant Banana & Fresh Leaf (Kuning Pisang, Hijau Daun, & Cokelat Batang)
 }
 
 /* --- Base & Reset --- */
+/* Ukuran dasar teks. Semua ukuran 'rem' mengikuti angka ini.
+   100% = 16px | 93.75% = 15px | 87.5% = 14px | 81.25% = 13px */
+html {
+  font-size: 87.5%;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 body {
   font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, sans-serif;
   background-color: var(--bg-color);
   color: var(--text-main);
   line-height: 1.6;
 }
-
 .container {
   width: 90%;
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 15px;
 }
-
 h1, h2, h3 {
   color: var(--accent-brown);
   font-weight: 700;
   line-height: 1.2;
 }
-
 a {
   color: var(--secondary-green);
   text-decoration: none;
   transition: all var(--transition-fast);
 }
-
 a:hover {
   color: var(--secondary-green-hover);
 }
@@ -83,7 +83,6 @@ a:hover {
   z-index: 100;
   padding: 0.5rem 0;
 }
-
 .nav-wrap {
   display: flex;
   justify-content: space-between;
@@ -92,7 +91,6 @@ a:hover {
   max-width: 1100px;
   margin: 0 auto;
 }
-
 .nav-wrap nav {
   display: flex;
   align-items: center;
@@ -102,23 +100,20 @@ a:hover {
   justify-content: flex-end;
   gap: 0.5rem;
 }
-
 .brand {
   color: #FFFFFF;
   font-family: 'Segoe UI', sans-serif;
-  font-size: 22px;
+  font-size: 1.3rem;
   font-weight: 800;
   text-decoration: none;
   display: flex;
   align-items: center;
   gap: 8px;
 }
-
 .brand::before {
   content: '🍌';
   font-size: 1.5rem;
 }
-
 nav a {
   font-weight: 600;
   color: #FFFFFF;
@@ -126,7 +121,6 @@ nav a {
   border-radius: var(--radius-sm);
   transition: all var(--transition-fast);
 }
-
 nav a:hover {
   background-color: rgba(255, 255, 255, 0.15);
   color: var(--primary-yellow);
@@ -218,6 +212,42 @@ section h2::after {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: .05em;
+}
+
+/* --- Statistik di Hero --- */
+.hero-highlights {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.hero-highlights div {
+  display: flex;
+  flex-direction: column;
+  min-width: 140px;
+  padding: .8rem 1.4rem;
+  background: var(--surface-color);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.hero-highlights strong {
+  font-size: 1.6rem;
+  color: var(--secondary-green);
+}
+
+.hero-highlights span {
+  font-size: .9rem;
+  color: var(--text-muted);
+}
+
+.calculator-link {
+  display: inline-block;
+  margin: 6px;
+  font-weight: 700;
 }
 
 /* --- Feature Grid (Keunggulan) --- */
@@ -366,7 +396,7 @@ tbody tr:hover {
   box-shadow: var(--shadow-sm);
 }
 
-/* --- Form Kartu dan Hasil (Pertemuan 5) --- */
+/* --- Form Kartu dan Hasil --- */
 .form-card,
 .summary-card {
   max-width: 760px;
@@ -376,6 +406,10 @@ tbody tr:hover {
   border-radius: var(--radius-md);
   border: 2px solid var(--border-color);
   box-shadow: var(--shadow-md);
+}
+
+.summary-card h3 {
+  margin: 1.5rem 0 .5rem;
 }
 
 .form-grid {
@@ -544,7 +578,6 @@ input[type="checkbox"] { accent-color: var(--secondary-green); }
 #media {
   text-align: center;
 }
-
 #media img, #media video {
   max-width: 100%;
   height: auto;
@@ -553,7 +586,6 @@ input[type="checkbox"] { accent-color: var(--secondary-green); }
   box-shadow: var(--shadow-md);
   border: 2px solid var(--border-color);
 }
-
 #media h3 {
   margin: 1.5rem 0 1rem 0;
 }
@@ -594,37 +626,37 @@ footer small {
 /* ===== RESPONSIVE LAYAR KECIL (HP) ===== */
 @media (max-width: 640px) {
   header { padding: 12px 16px; }
-  
-  .nav-wrap { 
-    flex-direction: column; 
-    align-items: flex-start; 
+
+  .nav-wrap {
+    flex-direction: column;
+    align-items: flex-start;
   }
-  
-  .nav-wrap nav { 
-    justify-content: flex-start; 
+
+  .nav-wrap nav {
+    justify-content: flex-start;
     width: 100%;
   }
-  
-  .nav-wrap nav a { 
-    margin: 4px 8px 4px 0; 
+
+  .nav-wrap nav a {
+    margin: 4px 8px 4px 0;
   }
 
   .site-header nav a.nav-cta,
   nav a[href="registration.php"] {
     margin-left: 0;
   }
-  
+
   .form-grid { grid-template-columns: 1fr; }
   .summary-list { grid-template-columns: 1fr; }
-  
+
   #hero h1,
   .page-intro h1 { font-size: 1.8rem; }
-  
+
   #katalog { overflow-x: auto; }
   table { min-width: 560px; }
 
   .registration-form .btn-primary { width: 100%; }
-  
+
   .summary-card .btn-link,
   .summary-card .btn-secondary {
     display: block;

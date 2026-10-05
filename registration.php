@@ -1,153 +1,158 @@
+<?php
+require_once __DIR__ . '/helpers.php';
+require_once __DIR__ . '/data.php';
+
+$siteName = 'KursusKu Pisang Pride';
+?>
 <!doctype html>
 <html lang="id">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Daftar Kursus - KursusKu</title>
+  <title>Daftar Kursus - <?= e($siteName) ?></title>
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/polish.css">
+  <link rel="stylesheet" href="assets/css/form-dark.css">
 </head>
-<body>
-<header class="site-header">
-  <div class="container nav-wrap">
-    <a class="brand" href="index.php">KursusKu</a>
-    <nav aria-label="Navigasi utama">
+<body class="form-page">
+  <header class="site-header">
+    <nav class="site-nav container" aria-label="Navigasi utama">
+      <a class="brand" href="index.php"><?= e($siteName) ?></a>
       <a href="index.php">Beranda</a>
-      <a href="index.php#katalog">Katalog</a>
-      <a href="registration.php">Daftar</a>
+      <a href="registration.php">Daftar Kursus</a>
+      <a href="history.php">History</a>
     </nav>
-  </div>
-</header>
-<main class="container">
-  <section class="page-intro">
-    <p class="eyebrow">Pendaftaran Kursus</p>
-    <h1>Mulai belajar bersama KursusKu</h1>
-    <p>Gunakan data latihan. Field bertanda wajib harus diisi.</p>
-  </section>
-  <section class="form-card">
-    <form action="process-registration.php" method="POST" class="registration-form">
-      <input type="hidden" name="source" value="week-05">
-<a class="nav-cta" href="registration.php">Daftar</a>
-      <div class="form-grid">
-        <div class="form-group">
-          <label for="name">Nama Lengkap</label>
-          <input id="name" name="name" type="text"
-                 minlength="3" maxlength="100"
-                 autocomplete="name" required>
+  </header>
+
+  <main class="container">
+    <section>
+      <h2>Form Pendaftaran</h2>
+      <p class="page-sub">Lengkapi data berikut untuk mendaftar kursus.</p>
+
+      <form class="form-card" method="POST" action="process-registration.php">
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="name">Nama Lengkap</label>
+            <input id="name" name="name" type="text" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Nomor HP</label>
+            <input id="phone" name="phone" type="tel" placeholder="Contoh: 081234567890">
+          </div>
+
+          <div class="form-group">
+            <label for="study_program">Program Studi</label>
+            <input id="study_program" name="study_program" type="text">
+          </div>
+
+          <div class="form-group full">
+            <label for="course_code">Kursus yang Dipilih</label>
+            <select id="course_code" name="course_code" required>
+              <option value="">-- Pilih kursus --</option>
+              <?php foreach ($courses as $course): ?>
+                <option value="<?= e($course['code']) ?>">
+                  <?= e($course['name']) ?> - <?= formatRupiah($course['fee']) ?>
+                </option>
+              <?php endforeach; ?>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="learning_mode">Metode Belajar</label>
+            <select id="learning_mode" name="learning_mode" required>
+              <option value="">-- Pilih metode belajar --</option>
+              <option value="offline">Tatap muka</option>
+              <option value="online">Online</option>
+              <option value="hybrid">Hybrid</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="package_count">Jumlah Paket</label>
+            <select id="package_count" name="package_count" required>
+              <?php for ($i = 1; $i <= 3; $i++): ?>
+                <option value="<?= $i ?>"><?= $i ?> paket</option>
+              <?php endfor; ?>
+            </select>
+          </div>
         </div>
+
+        <fieldset>
+          <legend>Jenis Peserta</legend>
+          <div class="choice-grid">
+            <label class="choice-card">
+              <input type="radio" name="participant_type" value="mahasiswa" required>
+              Mahasiswa
+            </label>
+            <label class="choice-card">
+              <input type="radio" name="participant_type" value="guru">
+              Guru
+            </label>
+            <label class="choice-card">
+              <input type="radio" name="participant_type" value="umum">
+              Umum
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Minat Tambahan</legend>
+          <div class="choice-grid">
+            <?php foreach ($interestOptions as $value => $label): ?>
+              <label class="choice-card">
+                <input type="checkbox" name="interests[]" value="<?= e($value) ?>">
+                <?= e($label) ?>
+              </label>
+            <?php endforeach; ?>
+          </div>
+        </fieldset>
+
         <div class="form-group">
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email"
-                 maxlength="120" autocomplete="email" required>
+          <label for="notes">Catatan</label>
+          <textarea id="notes" name="notes" rows="4" maxlength="300"
+                    placeholder="Tulis catatan tambahan (opsional)"></textarea>
         </div>
-        <div class="form-group">
-          <label for="phone">Nomor HP</label>
-          <input id="phone" name="phone" type="tel"
-                 maxlength="15" autocomplete="tel"
-                 placeholder="Contoh: 081234567890" required>
-        </div>
-        <div class="form-group">
-          <label for="study_program">Program Studi</label>
-          <input id="study_program" name="study_program"
-                 type="text" maxlength="100" required>
-        </div>
-      </div>
 
-      <div class="form-group">
-        <label for="course">Kursus yang Dipilih</label>
-        <select id="course" name="course" required>
-          <option value="">-- Pilih kursus --</option>
-          <option value="web-dasar">Web Dasar</option>
-          <option value="php-dasar">PHP Dasar</option>
-          <option value="laravel-fundamental">Laravel Fundamental</option>
-        </select>
-      </div>
+        <button type="submit" class="btn-primary">Proses Pendaftaran</button>
+      </form>
+    </section>
+  </main>
 
-      <fieldset class="form-group">
-        <legend>Jenis Peserta</legend>
-        <label class="choice">
-          <input type="radio" name="participant_type" value="mahasiswa" required> Mahasiswa
-        </label>
-        <label class="choice">
-          <input type="radio" name="participant_type" value="umum"> Umum
-        </label>
-      </fieldset>
+  <footer>
+    <small>&copy; <?= e(date('Y')) ?> <?= e($siteName) ?></small>
+  </footer>
 
-      <fieldset class="form-group">
-        <legend>Minat Tambahan</legend>
-        <label class="choice"><input type="checkbox" name="interests[]" value="ui-ux"> UI/UX</label>
-        <label class="choice"><input type="checkbox" name="interests[]" value="database"> Database</label>
-        <label class="choice"><input type="checkbox" name="interests[]" value="backend"> Backend</label>
-      </fieldset>
+  <script>
+    // Jumlah paket baru aktif setelah kursus dipilih
+    (function () {
+      var course = document.getElementById('course_code');
+      var pkg = document.getElementById('package_count');
+      var placeholder = document.createElement('option');
+      placeholder.value = '';
+      placeholder.textContent = '-- Pilih kursus terlebih dahulu --';
 
-      <div class="form-group">
-        <label for="note">Catatan</label>
-        <textarea id="note" name="note" rows="5" maxlength="300"
-                  placeholder="Tuliskan kebutuhan belajar Anda (opsional)"></textarea>
-        <small class="help">Maksimal 300 karakter.</small>
-      </div>
+      function sync() {
+        if (course.value === '') {
+          if (!placeholder.parentNode) { pkg.insertBefore(placeholder, pkg.firstChild); }
+          pkg.value = '';
+          pkg.disabled = true;
+        } else {
+          if (placeholder.parentNode) { pkg.removeChild(placeholder); }
+          pkg.disabled = false;
+          if (pkg.value === '') { pkg.value = '1'; }
+        }
+      }
 
-      <button class="btn-primary" type="submit">Kirim Pendaftaran</button>
-    </form>
-  </section>
-</main>
+      course.addEventListener('change', sync);
+      sync();
+    })();
+  </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
