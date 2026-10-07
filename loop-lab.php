@@ -5,8 +5,23 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Loop Lab - KursusKu</title>
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/polish.css">
 </head>
 <body>
+  <header class="site-header">
+    <nav class="site-nav container" aria-label="Navigasi utama">
+      <a class="brand" href="index.php">KursusKu Pisang Pride</a>
+      <a href="index.php#keunggulan">Keunggulan</a>
+      <a href="index.php#katalog">Katalog</a>
+      <a href="index.php#alur">Cara Daftar</a>
+      <a href="registration.php">Daftar Kursus</a>
+      <a href="history.php">History</a>
+      <a href="index.php#kontak">Kontak</a>
+      <a href="test-matrix.php">Test Matrix</a>
+      <a href="loop-lap.php">Loop-Lap</a>
+    </nav>
+  </header>
+
 <main class="container">
   <section>
     <h2>Loop Lab</h2>
@@ -55,5 +70,9 @@
     ?>
   </section>
 </main>
+
+<footer>
+  <small>&copy; <?= date('Y') ?> KursusKu Pisang Pride</small>
+</footer>
 </body>
 </html>
