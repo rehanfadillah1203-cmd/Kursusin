@@ -31,11 +31,12 @@ $modeLabels = [
   <header class="site-header">
     <nav class="site-nav container" aria-label="Navigasi utama">
       <a class="brand" href="index.php"><?= e($siteName) ?></a>
-      <a href="index.php#katalog">Katalog</a>
+   <a href="index.php">Beranda</a>
       <a href="registration.php">Daftar Kursus</a>
       <a href="history.php">History</a>
     </nav>
   </header>
+  
 
   <main class="container">
     <section>
