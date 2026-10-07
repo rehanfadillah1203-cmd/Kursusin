@@ -32,8 +32,9 @@ $hasil = hitungBiaya($fee, $peserta, $diskonPersen, $admin);
 $tests = [
     ['fee' => 350000, 'peserta' => 1, 'diskon' => 0,  'admin' => 25000, 'expected' => 375000],
     ['fee' => 350000, 'peserta' => 1, 'diskon' => 10, 'admin' => 25000, 'expected' => 340000],
-    ['fee' => 350000, 'peserta' => 2, 'diskon' => 10, 'admin' => 25000, 'expected' => 655000],
-    ['fee' => 350000, 'peserta' => 3, 'diskon' => 10, 'admin' => 25000, 'expected' => 970000],
+    ['fee' => 350000, 'peserta' => 2, 'diskon' => 25, 'admin' => 25000, 'expected' => 550000],
+    ['fee' => 0, 'peserta' => 1, 'diskon' => 10, 'admin' => 0, 'expected' => 0],
+    ['fee' => 2500000, 'peserta' => 3, 'diskon' => 10, 'admin' => 50000, 'expected' => 6800000],
 ];
 ?>
 <!doctype html>
