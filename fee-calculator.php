@@ -20,8 +20,8 @@ function hitungBiaya(int $fee, int $peserta, int $diskonPersen, int $admin): arr
 
 // Data contoh (Laravel Fundamental diambil dari data.php)
 $course = findCourse($courses, 'LAR-01');
-$fee          = $course['fee'];
-$peserta      = 2;
+$fee          = 350000;
+$peserta      = 1;
 $diskonPersen = 10;
 $admin        = 25000;
 $status       = 'Aktif';

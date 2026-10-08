@@ -29,7 +29,8 @@ $siteName = 'KursusKu Pisang Pride';
       <h2>Form Pendaftaran</h2>
       <p class="page-sub">Lengkapi data berikut untuk mendaftar kursus.</p>
 
-      <form class="form-card" method="GET" action="process-registration.php">
+      <form class="form-card" method="POST" action="process-registration.php">
+        
 
         <div class="form-grid">
           <div class="form-group">
