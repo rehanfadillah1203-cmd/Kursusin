@@ -30,7 +30,7 @@ $siteName = 'KursusKu Pisang Pride';
       <p class="page-sub">Lengkapi data berikut untuk mendaftar kursus.</p>
 
       <form class="form-card" method="POST" action="process-registration.php">
-        
+        <input type="hidden" name="source" value="week-05">
 
         <div class="form-grid">
           <div class="form-group">
