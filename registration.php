@@ -1,4 +1,7 @@
 <?php
+echo "<pre>";
+print_r($_POST['interests']);
+echo "</pre>";
 require_once __DIR__ . '/helpers.php';
 require_once __DIR__ . '/data.php';
 
@@ -108,7 +111,10 @@ $siteName = 'KursusKu Pisang Pride';
           <div class="choice-grid">
             <?php foreach ($interestOptions as $value => $label): ?>
               <label class="choice-card">
-                <input type="checkbox" name="interests[]" value="<?= e($value) ?>">
+                <input type="checkbox" name="interests[]" value="Coding"> Coding
+                <input type="checkbox" name="interests[]" value="Design"> Design
+                <input type="checkbox" name="interests[]" value="Marketing"> Marketing
+                
                 <?= e($label) ?>
               </label>
             <?php endforeach; ?>
