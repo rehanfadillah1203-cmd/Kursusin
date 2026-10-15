@@ -112,7 +112,7 @@ if ($lastEntry !== $entry) {
 </head>
 <body>
   <main class="container">
-    <div class="alert-success">Pendaftaran Berhasil Diproses Melalui metode  <strong><?= $_SERVER['REQUEST_METHOD'] ?></Strong>.</p>
+    <div class="alert-success">Pendaftaran Berhasil Diproses</div>
 
     <div class="summary-card">
       <dl class="summary-list">

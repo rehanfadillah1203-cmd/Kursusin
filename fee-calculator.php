@@ -20,10 +20,10 @@ function hitungBiaya(int $fee, int $peserta, int $diskonPersen, int $admin): arr
 
 // Data contoh (Laravel Fundamental diambil dari data.php)
 $course = findCourse($courses, 'LAR-01');
-$fee          = 350000;
-$peserta      = 2;
+$fee          = 2500000;
+$peserta      = 3;
 $diskonPersen = 10;
-$admin        = 25000;
+$admin        = 50000;
 $status       = 'Aktif';
 
 // Tambahan untuk UTS No. 5 (Boolean test)
