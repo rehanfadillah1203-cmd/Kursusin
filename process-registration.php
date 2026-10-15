@@ -4,12 +4,6 @@ session_start();
 require __DIR__ . '/helpers.php';
 require __DIR__ . '/data.php';
 
-// Tolak akses langsung (GET) -> kembali ke form
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    header('Location: registration.php');
-    exit;
-}
-
 // 1. Baca data POST dengan aman
 $name            = trim($_POST['name'] ?? '');
 $email           = trim($_POST['email'] ?? '');
@@ -118,7 +112,7 @@ if ($lastEntry !== $entry) {
 </head>
 <body>
   <main class="container">
-    <div class="alert-success">Pendaftaran Berhasil Diproses</div>
+    <div class="alert-success">Pendaftaran Berhasil Diproses Melalui metode  <strong><?= $_SERVER['REQUEST_METHOD'] ?></Strong>.</p>
 
     <div class="summary-card">
       <dl class="summary-list">

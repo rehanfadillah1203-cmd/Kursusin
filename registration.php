@@ -1,7 +1,4 @@
 <?php
-echo "<pre>";
-print_r($_POST['interests']);
-echo "</pre>";
 require_once __DIR__ . '/helpers.php';
 require_once __DIR__ . '/data.php';
 
@@ -32,7 +29,7 @@ $siteName = 'KursusKu Pisang Pride';
       <h2>Form Pendaftaran</h2>
       <p class="page-sub">Lengkapi data berikut untuk mendaftar kursus.</p>
 
-      <form class="form-card" method="POST" action="process-registration.php">
+      <form class="form-card" method="GET" action="process-registration.php">
         
 
         <div class="form-grid">
@@ -111,11 +108,9 @@ $siteName = 'KursusKu Pisang Pride';
           <div class="choice-grid">
             <?php foreach ($interestOptions as $value => $label): ?>
               <label class="choice-card">
-                <label><input type="checkbox" name="interests[]" value="ui-ux"> UI/UX</label>
-                <label><input type="checkbox" name="interests[]" value="database"> Database</label>
-                <label><input type="checkbox" name="interests[]" value="backend"> Backend</label>
-                
+                <input type="checkbox" name="interests[]" value="<?= e($value) ?>">
                 <?= e($label) ?>
+                print_r($_POST['interests']);
               </label>
             <?php endforeach; ?>
           </div>
