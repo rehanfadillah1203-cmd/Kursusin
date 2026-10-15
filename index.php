@@ -26,7 +26,8 @@ require_once __DIR__ . '/data.php';
       <a href="registration.php">Daftar Kursus</a>
       <a href="history.php">History</a>
       <a href="#kontak">Kontak</a>
-       <a href="test-matrix.php">Test Matrix</a>
+      <a href="test-matrix.php">Test Matrix</a>
+      <a href="server-time.php">Waktu Server</a>
     </nav>
   </header>
 
@@ -35,7 +36,6 @@ require_once __DIR__ . '/data.php';
       <p class="eyebrow">Platform Belajar Teknologi</p>
       <h1><?= e($tagline) ?></h1>
       <p>Temukan kursus teknologi yang relevan untuk meningkatkan keterampilan Anda.</p>
-       <p>CIHUUUYYYYY.</p>
       <div class="hero-buttons">
         <a href="#katalog" class="btn-primary">Lihat Kursus</a>
         <a href="fee-calculator.php" class="calculator-link">Lihat Estimasi Biaya <span aria-hidden="true">→</span></a>
