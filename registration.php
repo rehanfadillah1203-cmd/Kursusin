@@ -111,9 +111,9 @@ $siteName = 'KursusKu Pisang Pride';
           <div class="choice-grid">
             <?php foreach ($interestOptions as $value => $label): ?>
               <label class="choice-card">
-                <input type="checkbox" name="interests[]" value="Coding"> Coding
-                <input type="checkbox" name="interests[]" value="Design"> Design
-                <input type="checkbox" name="interests[]" value="Marketing"> Marketing
+                <label><input type="checkbox" name="interests[]" value="ui-ux"> UI/UX</label>
+                <label><input type="checkbox" name="interests[]" value="database"> Database</label>
+                <label><input type="checkbox" name="interests[]" value="backend"> Backend</label>
                 
                 <?= e($label) ?>
               </label>
