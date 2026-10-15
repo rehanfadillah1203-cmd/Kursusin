@@ -39,6 +39,11 @@ if ($course === null) {
 if (!in_array($participantType, ['mahasiswa', 'guru', 'umum'], true)) {
     $errors[] = 'Tipe peserta tidak valid.';
 }
+$pricingByParticipant = [
+    'mahasiswa' => ['unit_fee' => 300000, 'discount_percent' => 20],
+    'guru' => ['unit_fee' => 400000, 'discount_percent' => 15],
+    'umum' => ['unit_fee' => 350000, 'discount_percent' => 10],
+];
 if (!in_array($learningMode, ['offline', 'online', 'hybrid'], true)) {
     $errors[] = 'Metode belajar tidak valid.';
 }
