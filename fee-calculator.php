@@ -21,10 +21,14 @@ function hitungBiaya(int $fee, int $peserta, int $diskonPersen, int $admin): arr
 // Data contoh (Laravel Fundamental diambil dari data.php)
 $course = findCourse($courses, 'LAR-01');
 $fee          = 350000;
-$peserta      = 1;
+$peserta      = 2;
 $diskonPersen = 10;
 $admin        = 25000;
 $status       = 'Aktif';
+
+// Tambahan untuk UTS No. 5 (Boolean test)
+$isActive     = true;
+var_dump($isActive);
 
 $hasil = hitungBiaya($fee, $peserta, $diskonPersen, $admin);
 
@@ -47,13 +51,15 @@ $tests = [
   <link rel="stylesheet" href="assets/css/polish.css">
 </head>
 <body>
+  <body>
+  <!-- TAMBAHKAN var_dump DI SINI SUPAYA MUNCUL DI LAYAR -->
+  <div style="background: yellow; padding: 10px; color: black; font-weight: bold;">
+    <?php var_dump($isActive); ?>
+  </div>
+
   <header class="site-header">
     <nav class="site-nav container" aria-label="Navigasi utama">
-      <a class="brand" href="index.php"><?= e($siteName) ?></a>
-      <a href="index.php">Beranda</a>
-      <a href="registration.php">Daftar Kursus</a>
-      <a href="history.php">History</a>
-    </nav>
+...
   </header>
 
   <main class="container">
@@ -65,7 +71,7 @@ $tests = [
       <div class="summary-card">
         <dl class="summary-list">
           <dt>Nama Kursus</dt> <dd><b><?= e($course['name']) ?></b></dd>
-          <dt>Status</dt>      <dd><b><?= e($status) ?></b></dd>
+          <dt>Status</dt>     <dd><b><?= e($status) ?></b></dd>
         </dl>
 
         <table>
@@ -76,7 +82,7 @@ $tests = [
             <tr><td>Biaya per peserta</td><td><?= formatRupiah($fee) ?></td></tr>
             <tr><td>Jumlah peserta</td><td><?= $peserta ?> orang</td></tr>
             <tr><td>Subtotal</td><td><?= formatRupiah($hasil['subtotal']) ?></td></tr>
-            <tr><td>Diskon (<?= $diskonPersen ?>%)</td><td>- <?= formatRupiah($hasil['diskon']) ?></td></tr>
+            <tr><td>Diskon (<?= $diskonPersen ?>%)</td><td><?= formatRupiah($hasil['diskon']) ?></td></tr>
             <tr><td>Biaya admin</td><td><?= formatRupiah($admin) ?></td></tr>
             <tr><td><b>Total Akhir</b></td><td><b><?= formatRupiah($hasil['total']) ?></b></td></tr>
           </tbody>
